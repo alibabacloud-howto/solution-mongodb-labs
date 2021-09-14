@@ -5,4 +5,8 @@ export const nodes: Nodes = {
         mainKnot: true,
         children: [],
     },
+    '5b66952b-32f5-4995-a4f1-c42fe7b90542': {
+        children: [],
+        mainKnot: true,
+      },
 };
