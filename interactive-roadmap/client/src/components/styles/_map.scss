@@ -1,0 +1,139 @@
+.map {
+  overflow: hidden;
+  position: relative;
+  width: auto;
+  height: 100%;
+  padding-bottom: 10rem;
+
+  &__section-start {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+
+    @media only screen and(min-width: 700px) {
+      flex-direction: row;
+      margin-bottom: 0;
+    }
+  }
+
+  &__legend,
+  &__resource-wrapper {
+    width: fit-content;
+    height: auto;
+    margin: 0 auto;
+    padding: 5rem;
+    box-shadow: rgb(201, 201, 201) 0 5px 30px -15px;
+    flex-direction: column;
+    display: flex;
+  }
+
+  &__legend {
+    width: 50vw;
+    margin-top: 4rem;
+
+    @media only screen and(min-width: 700px) {
+      max-width: 35vw;
+      width: fit-content;
+      margin-top: 0;
+    }
+  }
+
+  &__resource-wrapper {
+    width: 50vw;
+
+    @media only screen and(min-width: 700px) {
+      max-width: 20vw;
+      max-width: 25vw;
+    }
+  }
+
+  &__ul {
+    list-style: none;
+  }
+
+  &__li {
+    font-size: 1.75rem;
+    margin-left: auto;
+    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono',
+      'Lucida Console', Monaco, monospace;
+    font-weight: 400;
+    color: #24292e;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 1rem;
+    letter-spacing: 0.05rem;
+
+    @media only screen and(min-width: 600px) {
+      font-size: 2.25rem;
+    }
+  }
+
+  &__github-link {
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    color: black;
+  }
+
+  &__github-icon {
+    width: 40px !important;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
+
+  &__indication-circle {
+    width: 20px !important;
+    height: 20px;
+    background-color: $recommendation;
+    border-radius: 50%;
+    color: white;
+    padding: 5px;
+    margin-right: 3rem;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.6rem;
+    line-height: 1;
+    font-weight: 600;
+
+    @media only screen and(min-width: 600px) {
+      margin-right: 1rem;
+    }
+
+    &--not-recommended {
+      background-color: $not-recommended;
+    }
+
+    &--option {
+      background-color: $option;
+    }
+
+    &--own-edit {
+      background-color: $own-edit;
+    }
+  }
+
+  &__resource-text {
+    font-size: 1.75rem;
+    margin-left: auto;
+    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono',
+      'Lucida Console', Monaco, monospace;
+    font-weight: 400;
+    color: #24292e;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 1rem;
+    letter-spacing: 0.05rem;
+
+    @media only screen and(min-width: 600px) {
+      font-size: 2.25rem;
+    }
+  }
+}

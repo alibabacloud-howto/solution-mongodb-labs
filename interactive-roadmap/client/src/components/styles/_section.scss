@@ -1,0 +1,91 @@
+.section {
+  position: relative;
+  margin: 8vh auto;
+  display: grid;
+  //height: 200vh;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    'centered sub'
+    'left-side sub-left'
+    'right-side sub-right';
+  grid-template-columns: 1fr 1fr;
+
+  grid-gap: 0.25rem;
+  margin-left: 1vw;
+  margin-right: 1vw;
+
+  @media only screen and(min-width: 1100px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 'sub-left left-side centered right-side sub-right';
+    grid-gap: 2rem;
+    grid-gap: 1rem;
+    margin-left: 4vw;
+    margin-right: 4vw;
+  }
+
+  &:first-child {
+    margin-bottom: 5vh;
+  }
+
+  &__side-elements {
+    margin: 0 auto;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &--left {
+      grid-area: left-side;
+    }
+
+    &--right {
+      grid-area: right-side;
+    }
+
+    &--right.section__side-elements--subchild {
+      grid-area: sub-right;
+    }
+
+    &--left.section__side-elements--subchild {
+      grid-area: sub-left;
+    }
+
+    &--center-section {
+      grid-area: centered;
+      height: auto;
+    }
+  }
+}
+
+.bubble {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  transform-origin: center;
+  transition: background 0.5s;
+  cursor: pointer;
+  border: 4px solid $add-node-color;
+
+  &::before {
+    content: '+';
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    text-align: center;
+    line-height: 1.37;
+    color: $add-node-color;
+  }
+
+  &:hover {
+    animation: action-tada 0.3s ease-in;
+    &::before {
+      animation: action-tada 0.3s ease-in;
+    }
+  }
+}
