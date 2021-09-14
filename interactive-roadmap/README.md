@@ -16,3 +16,8 @@ cd client
 npm install -g create-react-app
 npm install --save react react-dom
 npm start
+
+
+npm run-script build
+npm install -g serve
+nohup serve -s build &
