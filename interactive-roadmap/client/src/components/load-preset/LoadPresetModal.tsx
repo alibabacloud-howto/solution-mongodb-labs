@@ -146,12 +146,12 @@ const LoadPresetModal = ({ presets, user, currentPreset }: LoginModal) => {
   );
 
   /**
-   * Helper to check if the default Frontend Developer
+   * Helper to check if the default Alibaba Cloud Database
    * map is already loaded to the the users maps.
    */
   const checkIfDefaultPreset = useCallback((): [boolean, string] => {
     for (const preset of presets) {
-      if (preset.name === 'Frontend Developer') {
+      if (preset.name === 'Alibaba Cloud Database') {
         return [true, preset._id];
       }
     }
@@ -159,7 +159,7 @@ const LoadPresetModal = ({ presets, user, currentPreset }: LoginModal) => {
   }, [presets]);
 
   /**
-   * Creates the default Frontend Developer preset for the user.
+   * Creates the default Alibaba Cloud Database preset for the user.
    */
   const createDefaultPreset = useCallback(() => {
     if (user !== null) {
@@ -219,7 +219,7 @@ const LoadPresetModal = ({ presets, user, currentPreset }: LoginModal) => {
                   >
                     Load
                   </button>
-                  {preset.name !== 'Frontend Developer' && (
+                  {preset.name !== 'Alibaba Cloud Database' && (
                     <button
                       onClick={() => handleDeletePreset(preset._id, false)}
                       className='modal__btn-delete modal__btn'
@@ -227,7 +227,7 @@ const LoadPresetModal = ({ presets, user, currentPreset }: LoginModal) => {
                       Delete
                     </button>
                   )}
-                  {preset.name === 'Frontend Developer' && (
+                  {preset.name === 'Alibaba Cloud Database' && (
                     <button
                       onClick={() => {
                         handleDeletePreset(preset._id, true);

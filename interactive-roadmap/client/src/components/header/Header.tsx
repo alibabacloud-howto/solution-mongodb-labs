@@ -47,8 +47,8 @@ function Header({
         </div>
       ) : (
         <div className='header__wrapper' key={uuidv4()}>
-          <h1 className='header__heading'>Frontend Developer</h1>
-          <h2 className='header__subheading'>Default Frontend Roadmap</h2>
+          <h1 className='header__heading'>Alibaba Cloud Database</h1>
+          <h2 className='header__subheading'>Roadmap</h2>
         </div>
       )}
     </header>

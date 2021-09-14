@@ -16,10 +16,10 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    if (req.body.name === 'Frontend Developer') {
+    if (req.body.name === 'Alibaba Cloud Database') {
       try {
         const preset = await Preset.find({
-          name: 'Frontend Developer',
+          name: 'Alibaba Cloud Database',
           user: req.user.id,
         }).then((name) => name);
         if (preset.length) {
