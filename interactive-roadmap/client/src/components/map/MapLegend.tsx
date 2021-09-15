@@ -10,7 +10,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 const MapLegend = () => {
   return (
     <div className='map__section-start'>
-      <div className='map__legend'>
+      {/* <div className='map__legend'>
         <ul className='map__ul'>
           <li className='map__li'>
             <div className='map__indication-circle'>!</div>
@@ -35,7 +35,7 @@ const MapLegend = () => {
             Assign yourself
           </li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };
