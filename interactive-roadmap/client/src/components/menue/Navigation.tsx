@@ -151,7 +151,7 @@ function Navigation({
       <div className='menue-bar__spaceholder'></div>
       <nav className='menue-bar'>
         <Link to='/' className='menue-bar__title'>
-          Alibaba Cloud Database Roadmap
+          Roadmap Gallery
         </Link>
         {sideWidth >= 1100 ? null : (
           <div
