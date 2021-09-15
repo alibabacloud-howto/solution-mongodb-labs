@@ -170,7 +170,7 @@ function Navigation({
           </div>
         )}
         <div className='menue-bar__links'>
-          {!isAuthenticated /**  && (
+          {!isAuthenticated && (
             <>
               <Link to='/login' className='menue-bar__link'>
                 Login
@@ -180,7 +180,7 @@ function Navigation({
                 <span className='menue-bar__free-indicator'>(free)</span>
               </Link>
             </>
-          ) **/}
+          )}
           {(currentPreset.length || isAuthenticated) && (
             <button className='menue-bar__link' onClick={handleSave}>
               Save
