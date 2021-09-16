@@ -13,7 +13,7 @@ This is an interesting web application to create interactive roadmap, timeline o
 
 ![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/app_screenshot.png)
 
-Live demo: [http://roadmap-gallery.alibabacloudlabs.com/](http://roadmap-gallery.alibabacloudlabs.com/)
+Live demo: [http://roadmap-gallery.alibabacloudlabs.com/](http://roadmap-gallery.alibabacloudlabs.com/), if you can not open the domain URL, please make sure that you had VPN or network proxy set properly.
 
 These are the key features for this web application:
 - Register and login with user
