@@ -1,4 +1,4 @@
-# Create an Next.js and MongoDB Web Application on Alibaba Cloud
+# Create a Social Web Application with Next.js and MongoDB on Alibaba Cloud
 
 You can access the tutorial artifact including deployment script (Terraform), related source code, sample data and instruction guidance from the github project:
 [https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/nextjs-mongodb-app](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/nextjs-mongodb-app)
@@ -9,7 +9,7 @@ More tutorial around Alibaba Cloud Database, please refer to:
 ---
 ### Overview
 
-This is an [Next.js](https://nextjs.org/) and [MongoDB](https://www.mongodb.com/) web application, designed with simplicity for learning and real-world applicability in mind with Next.js and MongoDB on cloud.
+This is an [Next.js](https://nextjs.org/) and [MongoDB](https://www.mongodb.com/) social web application, designed with simplicity for learning and real-world applicability in mind with Next.js and MongoDB on cloud.
 The original project is [https://github.com/hoangvvo/nextjs-mongodb-app](https://github.com/hoangvvo/nextjs-mongodb-app), we've done some modification and customization with make it all work on [Alibaba Cloud ECS](https://www.alibabacloud.com/product/ecs) and [MongoDB](https://www.alibabacloud.com/product/apsaradb-for-mongodb).
 
 Deployment architecture:
@@ -33,7 +33,7 @@ Run the [terraform script](https://github.com/alibabacloud-howto/solution-mongod
 
 After the Terraform script execution finished, the ECS instance information are listed as below.
 
-![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/tf-done.png)
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/nextjs-mongodb-app/images/tf-done.png)
 
 - ``eip_ecs``: The public EIP of the ECS for web app host
 
@@ -176,7 +176,7 @@ Enter the command: ``vim .env``, open the ".env" configuration file, and modify 
 
 ![image desc](https://labex.io/upload/R/K/E/BgOlYAFQgtTV.jpg)
 
-The connection method to obtain Mongodb is as shown in the figure below. Please pay attention to replace "****" with the password "Aliyuntest123".
+The connection method to obtain MongoDB is as shown in the figure below. Please pay attention to replace "****" with the password "Aliyuntest123".
 
 ![image desc](https://labex.io/upload/Q/X/S/K0RXOAwGLE9s.jpg)
 
@@ -196,5 +196,39 @@ Users can register their own accounts to post messages.
 
 ![image desc](https://labex.io/upload/U/P/P/DfDbvgDFu08V.jpg)
 
+Usually, we need to run the Node.js app as daemon process. Now, let's install [pm2](https://pm2.io/) to start or manage the lifecycle of the Node.js web app.
+First, enter ``Ctrl + C`` to stop the web app process started by executing ``npm run dev`` before. Then please execute the following commands to install pm2 and start the web app via pm2.
+
+```
+npm i -g pm2
+npm run build
+```
+
+```
+pm2 start npm -- run start
+```
+
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/nextjs-mongodb-app/images/pm2-start.png)
+
+Then, visit the public IP address of the current ECS with port 3000 again in the browser, and the project is started by pm2 successfully.
+
 ---
 ### Step 4. Install Mongoku on ECS to manage data on MongoDB
+
+Execute the following commands to install open source MongoDB Web Admin tool [Mongoku](https://github.com/huggingface/Mongoku) on ECS to manage data on MongoDB.
+
+```
+cd ~
+npm install -g mongoku
+mongoku start --pm2
+```
+
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/nextjs-mongodb-app/images/start-mongoku.png)
+
+Then let's open ``http://<ECS_EIP>:3100/`` again in web browser to visit the Mongoku Web Admin. Mongoku use ``3100`` port for web app by default. I've already set this in the security group rule within the [Terraform script](https://github.com/alibabacloud-howto/solution-mongodb-labs/blob/main/nextjs-mongodb-app/deployment/terraform/main.tf).
+
+Now we can add the MongoDB connection URI here as the server to navigate and manage the data for this social web app via Mongoku. Please enjoy.
+
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/nextjs-mongodb-app/images/mongoku-1.png)
+
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/nextjs-mongodb-app/images/mongoku-2.png)
