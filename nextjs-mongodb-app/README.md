@@ -19,10 +19,10 @@ Deployment architecture:
 ---
 ### Index
 
-- [Step 1. Use Terraform to provision ECS and MongoDB database on Alibaba Cloud]()
-- [Step 2. Install Next.js on ECS]()
-- [Step 3. Deploy and run the web app]()
-- [Step 4. Install Mongoku on ECS to manage data on MongoDB]()
+- [Step 1. Use Terraform to provision ECS and MongoDB database on Alibaba Cloud](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/nextjs-mongodb-app#step-1-use-terraform-to-provision-ecs-and-mongodb-database-on-alibaba-cloud)
+- [Step 2. Install Next.js on ECS](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/nextjs-mongodb-app#step-2-install-nextjs-on-ecs)
+- [Step 3. Deploy and run the web app](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/nextjs-mongodb-app#step-3-deploy-and-run-the-web-app)
+- [Step 4. Install Mongoku on ECS to manage data on MongoDB](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/nextjs-mongodb-app#step-4-install-mongoku-on-ecs-to-manage-data-on-mongodb)
 
 ---
 ### Step 1. Use Terraform to provision ECS and MongoDB database on Alibaba Cloud
