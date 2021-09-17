@@ -1,0 +1,200 @@
+# Create an Next.js and MongoDB Web Application on Alibaba Cloud
+
+You can access the tutorial artifact including deployment script (Terraform), related source code, sample data and instruction guidance from the github project:
+[https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/nextjs-mongodb-app](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/nextjs-mongodb-app)
+
+More tutorial around Alibaba Cloud Database, please refer to:
+[https://github.com/alibabacloud-howto/database](https://github.com/alibabacloud-howto/database)
+
+---
+### Overview
+
+This is an [Next.js](https://nextjs.org/) and [MongoDB](https://www.mongodb.com/) web application, designed with simplicity for learning and real-world applicability in mind with Next.js and MongoDB on cloud.
+The original project is [https://github.com/hoangvvo/nextjs-mongodb-app](https://github.com/hoangvvo/nextjs-mongodb-app), we've done some modification and customization with make it all work on [Alibaba Cloud ECS](https://www.alibabacloud.com/product/ecs) and [MongoDB](https://www.alibabacloud.com/product/apsaradb-for-mongodb).
+
+Deployment architecture:
+
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/nextjs-mongodb-app/images/archi.png)
+
+---
+### Index
+
+- [Step 1. Use Terraform to provision ECS and MongoDB database on Alibaba Cloud]()
+- [Step 2. Install Next.js on ECS]()
+- [Step 3. Deploy and run the web app]()
+- [Step 4. Install Mongoku on ECS to manage data on MongoDB]()
+
+---
+### Step 1. Use Terraform to provision ECS and MongoDB database on Alibaba Cloud
+
+Run the [terraform script](https://github.com/alibabacloud-howto/solution-mongodb-labs/blob/main/nextjs-mongodb-app/deployment/terraform/main.tf) to initialize the resources (in this tutorial, we use MongoDB as backend database, so ECS and MongoDB are included in the Terraform script). Please specify the necessary information and region to deploy.
+
+![image.png](https://github.com/alibabacloud-howto/opensource_with_apsaradb/raw/main/apache-airflow/images/tf-parms.png)
+
+After the Terraform script execution finished, the ECS instance information are listed as below.
+
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/tf-done.png)
+
+- ``eip_ecs``: The public EIP of the ECS for web app host
+
+Go to the Alibaba Cloud ECS console and you can see the ECS instance you just created.
+
+![image desc](https://labex.io/upload/O/I/P/kPjLTkZ0DJ3a.jpg) 
+
+Go to the Alibaba Cloud Mongodb console to view the Mongodb instance.
+
+![image desc](https://labex.io/upload/V/F/V/A8LMwIVvpDXa.jpg)
+
+---
+### Step 2. Install Next.js on ECS
+
+#### 2.1 Log into a new instance
+
+Copy the public IP address of the "mongodb-tech" instance just created, and log in remotely via SSH.
+
+![image desc](https://labex.io/upload/O/I/P/kPjLTkZ0DJ3a.jpg) 
+
+> The default account name and password of the ECS instance:
+> 
+> Account name: root
+> 
+> Password: Aliyuntest123
+
+```bash
+ssh root@<ECS_EIP>
+```
+
+![image.png](https://github.com/alibabacloud-howto/opensource_with_apsaradb/raw/main/apache-ofbiz/images/ecs-logon.png)
+
+#### 2.2 Install Next.js
+
+Enter the following command to download the nodejs installation package.
+
+```
+wget https://labex-ali-data.oss-us-west-1.aliyuncs.com/nodejs/node-v16.9.1-linux-x64.tar.xz  
+```
+
+![image desc](https://labex.io/upload/E/S/W/UoJ9GXT0Fofr.jpg)
+
+Enter the following command to decompress the installation package.
+
+```
+tar xf node-v16.9.1-linux-x64.tar.xz
+```
+
+![image desc](https://labex.io/upload/F/N/Q/En3V7Hvfmpmw.jpg)
+
+Run the following command to move the decompressed directory to the /usr/local directory:
+
+```
+mv node-v16.9.1-linux-x64 /usr/local/node
+```
+
+![image desc](https://labex.io/upload/B/J/H/Pv8dYTacGzVW.jpg)
+
+Run the ``vim /etc/profile`` command to open the environment variable configuration file. Append the following content to the end of the file.
+
+```
+export NODE_HOME=/usr/local/node
+export PATH=$PATH:$NODE_HOME/bin
+```
+
+![image desc](https://labex.io/upload/D/Q/J/1o9C0jDPU5x3.jpg)
+
+Run the following command to make the modification take effect.
+
+```
+source /etc/profile
+```
+
+![image desc](https://labex.io/upload/Q/D/U/ir0LOLaFzlpZ.jpg)
+
+Run the following commands. You can see the corresponding service version, which indicates the installation is completed.
+
+```
+node -v
+
+npm -v
+```
+
+![image desc](https://labex.io/upload/J/M/D/Yee86Gv9rzRK.jpg)
+
+---
+### Step 3. Deploy and run the web app
+
+Enter the following command to install the git tool.
+
+```
+apt update && apt -y install git
+```
+
+![image desc](https://labex.io/upload/H/M/C/FjcbaxTjH1yz.jpg)
+
+Enter the following command to create a projects directory and enter.
+
+```
+mkdir projects && cd projects
+```
+
+![image desc](https://labex.io/upload/V/C/G/o1ytZ8ma53W1.jpg)
+
+Enter the following command to download the sample project.
+
+```
+git clone https://github.com/hoangvvo/nextjs-mongodb-app 
+
+ls
+```
+
+![image desc](https://labex.io/upload/F/W/K/ZafhmDTK9rz3.jpg)
+
+Enter the following command to enter the sample project directory.
+
+```
+cd nextjs-mongodb-app
+```
+
+![image desc](https://labex.io/upload/X/R/U/hm2sSKtFipQ1.jpg)
+
+Enter the following command to install the nextjs framework dependency package.
+
+```
+npm install next react react-dom
+```
+
+![image desc](https://labex.io/upload/H/W/H/MdKDbaeN1pZJ.jpg)
+
+Enter the following command to copy a ".env" configuration file first.
+
+```
+cp .env.example .env
+```
+
+![image desc](https://labex.io/upload/H/U/O/h43VH2jrmva4.jpg)
+
+Enter the command: ``vim .env``, open the ".env" configuration file, and modify the connection address of Mongodb referring to the figure below.
+
+![image desc](https://labex.io/upload/R/K/E/BgOlYAFQgtTV.jpg)
+
+The connection method to obtain Mongodb is as shown in the figure below. Please pay attention to replace "****" with the password "Aliyuntest123".
+
+![image desc](https://labex.io/upload/Q/X/S/K0RXOAwGLE9s.jpg)
+
+Enter the following command to start the project.
+
+```
+npm run dev
+```
+
+![image desc](https://labex.io/upload/S/C/H/oCdzRxO3ek2q.jpg)
+
+Visit the public IP address of the current ECS in the browser, and the project is installed successfully.
+
+![image desc](https://labex.io/upload/K/J/R/r7akBFLaItGD.jpg)
+
+Users can register their own accounts to post messages.
+
+![image desc](https://labex.io/upload/U/P/P/DfDbvgDFu08V.jpg)
+
+---
+### Step 4. Install Mongoku on ECS to manage data on MongoDB
