@@ -1,4 +1,4 @@
-# Create a Social Web Application with Next.js and MongoDB on Alibaba Cloud
+# Create a Social Web App with Next.js and MongoDB on Alibaba Cloud
 
 You can access the tutorial artifact including deployment script (Terraform), related source code, sample data and instruction guidance from the github project:
 [https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/nextjs-mongodb-app](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/nextjs-mongodb-app)
