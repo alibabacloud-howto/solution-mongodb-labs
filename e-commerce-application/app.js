@@ -12,6 +12,9 @@ var Order = require("./models/order");
 var User = require("./models/user");
 var OrderCount = require("./models/orderCount");
 var flash = require("connect-flash");
+
+const dotenv = require('dotenv');
+dotenv.config();
  		  
 var dbURL = process.env.DATABASEURL || 'mongodb://localhost:27017/apniDukaan';
 mongoose.connect(dbURL, {useNewUrlParser: true});
