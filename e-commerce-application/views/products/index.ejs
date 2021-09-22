@@ -2,7 +2,7 @@
 
 <div class="container">
 	<div class="jumbotron my-4 my-lg-5">
-		<h3>Welcome to Apni Dukaan</h3>
+		<h3>Welcome to My Store</h3>
 	</div>
 
 	<div class="row">
@@ -18,9 +18,9 @@
 						</a>
 						
 						<h6>
-							<span class="mr-1">₹<%= product.price %></span>
+							<span class="mr-1">$<%= product.price %></span>
 							<span class="nowrap">
-								<span class="mrp mr-1">₹<%= product.mrp %></span>
+								<span class="mrp mr-1">$<%= product.mrp %></span>
 								<span class="disc"><%= product.disc_perc %>% off</span>
 							</span>
 						</h6>
@@ -33,7 +33,7 @@
 							<% } else { %>
 										<a href="/cart/new/<%= product._id %>/index"><button class="btn btn-sm btn-primary mr-md-1">Add to cart</button></a>
 							<% } %>
-							<span class="nowrap disc">Save ₹<%= product.discount %></span>
+							<span class="nowrap disc">Save $<%= product.discount %></span>
 						</h6>						
 					</div>
 				</div>

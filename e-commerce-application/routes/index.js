@@ -19,7 +19,7 @@ router.post("/register",function(req,res){
 			res.redirect("/register");
 		} else {
 			passport.authenticate("local")(req,res,function(){
-				req.flash("success","Hi " + user.username + ", Welcome to Apni Dukaan!")
+				req.flash("success","Hi " + user.username + ", Welcome to My Store!")
 				res.redirect("/products");
 			});
 		}

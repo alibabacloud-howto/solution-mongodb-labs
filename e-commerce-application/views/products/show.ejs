@@ -23,9 +23,9 @@
 			</div>
 			
 			<h5>
-				<span class="mr-1">₹<%= product.price %></span>
+				<span class="mr-1">$<%= product.price %></span>
 				<span class="nowrap">
-					<span class="mrp mr-1">₹<%= product.mrp %></span>
+					<span class="mrp mr-1">$<%= product.mrp %></span>
 					<span class="disc"><%= product.disc_perc %>% off</span>
 				</span>
 			</h5>
@@ -38,7 +38,7 @@
 				<% } else { %>
 							<a href="/cart/new/<%= product._id %>/show"><button class="btn btn-primary mr-2">Add to cart</button></a>
 				<% } %>
-				<span class="disc nowrap">Save ₹<%= product.discount %></span>
+				<span class="disc nowrap">Save $<%= product.discount %></span>
 			</h6>
 
 			<div class="card my-5">

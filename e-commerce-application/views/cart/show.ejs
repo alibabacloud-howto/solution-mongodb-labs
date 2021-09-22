@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-22 17:00:58
+ * @LastEditTime: 2021-09-22 17:54:41
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /ws_cloudsolution/solution-mongodb-labs/e-commerce-application/views/cart/show.ejs
+-->
 <%- include("../partials/header") %>
 
 <div class="container cart-show">
@@ -19,12 +27,12 @@
 						</a>
 
 						<h6>
-							<span class="mr-1">₹<%= cartItem.product.price %></span>
+							<span class="mr-1">$<%= cartItem.product.price %></span>
 							<span class="nowrap">
-								<span class="mrp mr-1">₹<%= cartItem.product.mrp %></span>
+								<span class="mrp mr-1">$<%= cartItem.product.mrp %></span>
 								<span class="disc"><%= cartItem.product.disc_perc %>% off</span>
 							</span>
-							<div class="disc nowrap">You Save ₹<%= cartItem.product.discount %></div>
+							<div class="disc nowrap">You Save $<%= cartItem.product.discount %></div>
 						</h6>
 
 						<div class="float-right ml-2">
@@ -50,11 +58,11 @@
 	</div>
 	<% if(user.cart.items.length>0){ %>
 		<div class="border pt-3 pb-2 px-3 my-4">
-			<h6 class="float-right">₹<%=user.cart.cart_total%></h6>
+			<h6 class="float-right">$<%=user.cart.cart_total%></h6>
 			<h6>Cart Total</h6>
-			<h6 class="float-right disc">(-)₹<%=user.cart.discount%></h6>
+			<h6 class="float-right disc">(-)$<%=user.cart.discount%></h6>
 			<h6 class="disc">Discount</h6>
-			<h6 class="float-right">₹<%=user.cart.total%></h6>
+			<h6 class="float-right">$<%=user.cart.total%></h6>
 			<h6>Total Payable</h6>
 		</div>
 		<a href="/checkout" class="btn btn-success float-right mb-5">Proceed to Checkout</a>

@@ -17,12 +17,12 @@
 						</div>
 
 						<h6>
-							<span class="mr-1">₹<%= order.checkoutCart.items[0].product.price %></span>
+							<span class="mr-1">$<%= order.checkoutCart.items[0].product.price %></span>
 							<span class="nowrap">
-								<span class="mrp mr-1">₹<%= order.checkoutCart.items[0].product.mrp %></span>
+								<span class="mrp mr-1">$<%= order.checkoutCart.items[0].product.mrp %></span>
 								<span class="disc"><%= order.checkoutCart.items[0].product.disc_perc %>% off</span>
 							</span>
-							<div class="disc nowrap">You Saved ₹<%= order.checkoutCart.items[0].product.discount %></div>
+							<div class="disc nowrap">You Saved $<%= order.checkoutCart.items[0].product.discount %></div>
 						</h6>
 
 						<div class="nowrap">Quantity - <%= order.checkoutCart.items[0].qty %></div>
@@ -34,7 +34,7 @@
 					<div class="float-right">+ <%= order.checkoutCart.items.length-1 %> more product(s)</div><br>
 				<% } %>
 				<hr>
-				<h6 class="float-right">₹<%= order.checkoutCart.total %></h6>
+				<h6 class="float-right">$<%= order.checkoutCart.total %></h6>
 				<h6>Total Payable</h6>
 			</div>
 		</a>
