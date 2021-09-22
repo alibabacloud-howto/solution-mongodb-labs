@@ -1,0 +1,108 @@
+.login-register, .product-form, .review-form, .checkout-form, .cart-show {
+ 	width: 100%; 
+ 	margin: 25px auto;
+}
+
+.login-register {
+	max-width: 300px;
+}
+
+.product-form, .review-form, .cart-show {
+ 	max-width: 500px; 
+}
+
+.checkout-form {
+ 	max-width: 800px; 
+}
+
+.resp-img {
+ 	width: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.pro-ind {
+ 	height: 225px;
+}
+
+.pro-show {
+ 	height: 350px;
+}
+
+.cart, .order {
+ 	height: 100px;
+}
+
+.a, .a-order, .a-order:hover {
+ 	color: black;
+}
+
+.a:hover {
+	color: #007bff;
+}
+
+a:hover {
+	text-decoration: none !important;
+}
+
+.opac {
+	opacity: 0.8;
+}
+
+.screen-center-conf {
+	position: absolute; 
+	top: 50%; 
+	left: 50%;
+	margin-top: -100px;
+	margin-left: -185px;
+}
+
+.screen-center-cart {
+	position: absolute; 
+	top: 50%; 
+	left: 50%;
+	margin-top: -110px;
+	margin-left: -150px;
+
+}
+
+.empty-cart-img {
+	width: 200px; 
+	height: 150px;
+}
+
+.ord-ind-div {
+	width: 100%; 
+	max-width: 550px; 
+	margin: auto;
+}
+
+.ord-show-div {
+	width: 100%; 
+	max-width: 1000px; 
+	margin: auto;
+}
+
+.white {
+	color: white;
+}
+
+.mrp {
+	text-decoration: line-through;
+	opacity: 0.8;
+	font-size: 0.8em;
+}
+
+.disc {
+	color: green;
+	font-size: 0.8em;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.navbar .navbar-nav .dropdown .dropdown-menu .dropdown-item:hover {
+  color: #007bff;
+}
