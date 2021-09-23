@@ -91,28 +91,16 @@ git clone https://github.com/alibabacloud-howto/solution-mongodb-labs.git
 Execute the commands and edit the ``.env`` file to setup the MongoDB connection URI (got in the Step 1), then save the changes to the ``.env`` file. By default, I will use ``5000`` as the web app port, if you'd like to change it, please update accordingly.
 
 ```
-cd ~/solution-mongodb-labs/interactive-roadmap
-vim backend/.env
+cd ~/solution-mongodb-labs/e-commerce-application
+vim .env
 ```
 
 ![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/env.png)
 
-Execute the following commands to build and install the ``backend`` component.
+Execute the following commands to build and install the app.
 
 ```
-cd ~/solution-mongodb-labs/interactive-roadmap/backend
 npm install
-```
-
-![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/npm-backend-install.png)
-
-Execute the following commands to build the ``client`` component.
-
-```
-cd ~/solution-mongodb-labs/interactive-roadmap/client
-npm install -g create-react-app
-npm install --save react react-dom
-npm run-script build
 ```
 
 ![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/npm-client-build.png)
