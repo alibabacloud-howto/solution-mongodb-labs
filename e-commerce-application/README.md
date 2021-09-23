@@ -1,7 +1,7 @@
 # Create an E-Commerce Web App with Node.js Express Framework and MongoDB on Alibaba Cloud
 
 You can access the tutorial artifact including deployment script (Terraform), related source code, sample data and instruction guidance from the github project:
-[https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/interactive-roadmap](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/interactive-roadmap)
+[https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/e-commerce-application](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/e-commerce-application)
 
 More tutorial around Alibaba Cloud Database, please refer to:
 [https://github.com/alibabacloud-howto/database](https://github.com/alibabacloud-howto/database)
@@ -9,19 +9,17 @@ More tutorial around Alibaba Cloud Database, please refer to:
 ---
 ### Overview
 
-This is an interesting web application to create interactive roadmap, timeline or milestone graph built with [Node.js](https://nodejs.org/) and [React](https://reactjs.org/). The backend data store is on MongoDB. In this tutorial, I will show the steps of build and deployment on [Alibaba Cloud ECS](https://www.alibabacloud.com/product/ecs) and [MongoDB](https://www.alibabacloud.com/product/apsaradb-for-mongodb).
+This is a demo E-Commerce online store web application that is built with [Node.js](https://nodejs.org/) [Express framework](https://expressjs.com/). The backend data store is on MongoDB. In this tutorial, I will show the steps of build and deployment on [Alibaba Cloud ECS](https://www.alibabacloud.com/product/ecs) and [MongoDB](https://www.alibabacloud.com/product/apsaradb-for-mongodb).
 
 ![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/app_screenshot.png)
 
 Live demo: [http://roadmap-gallery.alibabacloudlabs.com/](http://roadmap-gallery.alibabacloudlabs.com/), if you can not open the domain URL, please make sure that you had VPN or network proxy set properly.
 
 These are the key features of this web application:
+- Manage product via ``admin`` account
 - Register and login with user
-- Create, update and save custom roadmaps
-- Download and Load the created map in unregistered mode via JSON
-- Download and Load the created map in user registered mode via JSON
-- Nodes have editable comment-, title-, date-, recommendation-indication- and status fields
-- Relationship between tasks displayed by svg lines
+- Navigate, add product to shopping cart
+- Place order
 
 Deployment architecture:
 
@@ -30,15 +28,15 @@ Deployment architecture:
 ---
 ### Index
 
-- [Step 1. Use Terraform to provision ECS and MongoDB database on Alibaba Cloud](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/interactive-roadmap#step-1-use-terraform-to-provision-ecs-and-mongodb-database-on-alibaba-cloud)
-- [Step 2. Deploy and setup Node.js and other basic components on ECS](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/interactive-roadmap#step-2-deploy-and-setup-nodejs-and-other-basic-components-on-ecs)
-- [Step 3. Build and deploy the web application](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/interactive-roadmap#step-3-build-and-deploy-the-web-application)
-- [Step 4. Install Mongoku on ECS to manage data on MongoDB](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/interactive-roadmap#step-4-install-mongoku-on-ecs-to-manage-data-on-mongodb)
+- [Step 1. Use Terraform to provision ECS and MongoDB database on Alibaba Cloud]()
+- [Step 2. Deploy and setup Node.js and other basic components on ECS]()
+- [Step 3. Build and deploy the web application]()
+- [Step 4. Install Mongoku on ECS to manage data on MongoDB]()
 
 ---
 ### Step 1. Use Terraform to provision ECS and MongoDB database on Alibaba Cloud
 
-Run the [terraform script](https://github.com/alibabacloud-howto/solution-mongodb-labs/blob/main/interactive-roadmap/deployment/terraform/main.tf) to initialize the resources (in this tutorial, we use MongoDB as backend database, so ECS and MongoDB are included in the Terraform script). Please specify the necessary information and region to deploy.
+Run the [terraform script](https://github.com/alibabacloud-howto/solution-mongodb-labs/blob/main/e-commerce-application/deployment/terraform/main.tf) to initialize the resources (in this tutorial, we use MongoDB as backend database, so ECS and MongoDB are included in the Terraform script). Please specify the necessary information and region to deploy.
 
 ![image.png](https://github.com/alibabacloud-howto/opensource_with_apsaradb/raw/main/apache-airflow/images/tf-parms.png)
 
@@ -88,14 +86,14 @@ Execute the command to checkout the project [https://github.com/alibabacloud-how
 git clone https://github.com/alibabacloud-howto/solution-mongodb-labs.git
 ```
 
-Execute the commands and edit the ``.env`` file to setup the MongoDB connection URI (got in the Step 1), then save the changes to the ``.env`` file. By default, I will use ``5000`` as the web app port, if you'd like to change it, please update accordingly.
+Execute the commands and edit the ``.env`` file to setup the MongoDB connection URI (got in the Step 1), then save the changes to the ``.env`` file. By default, I will use ``3000`` as the web app port, if you'd like to change it, please update accordingly.
 
 ```
 cd ~/solution-mongodb-labs/e-commerce-application
 vim .env
 ```
 
-![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/env.png)
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/env.png)
 
 Execute the following commands to build and install the app.
 
@@ -103,33 +101,58 @@ Execute the following commands to build and install the app.
 npm install
 ```
 
-![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/npm-client-build.png)
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/npm-client-build.png)
 
-Then both the ``backend`` and ``client`` components are built successfully. Now execute the following commands to start the web app.
+Now execute the following commands to start the web app.
 
 ```
-cd ~/solution-mongodb-labs/interactive-roadmap/backend
+cd ~/solution-mongodb-labs/e-commerce-application
 npm start
 ```
 
-![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/npm-start.png)
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/npm-start.png)
 
-Then let's open ``http://<ECS_EIP>:5000/`` in web browser to visit the web app.
+Then let's open ``http://<ECS_EIP>:3000/`` in web browser to visit the web app.
 
-![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/web-app.png)
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/web-app.png)
 
 Usually, we need to run the Node.js app as daemon process. Now, let's install [pm2](https://pm2.io/) to start or manage the lifecycle of the Node.js web app.
 First, enter ``Ctrl + C`` to stop the web app process started by executing ``npm start`` before. Then please execute the following commands to install pm2 and start the web app via pm2.
 
 ```
-cd ~/solution-mongodb-labs/interactive-roadmap/backend
+cd ~/solution-mongodb-labs/e-commerce-application
 npm i -g pm2
-pm2 start server.js
+pm2 start app.js
 ```
 
-![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/pm2-start.png)
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/pm2-start.png)
 
-Then let's open ``http://<ECS_EIP>:5000/`` again in web browser to visit the web app.
+Then let's open ``http://<ECS_EIP>:3000/`` again in web browser to visit the web app.
+
+Let's do some simple operation on it,
+- Sign Up ``admin`` account for managing product
+
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/admin.png)
+
+- Add Product. Let's add iPhone 13 product family for the demo. For the product image URL, I will use the following URLs. Also, the product can be edited.
+  - iPhone 13 mini: https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/iphone-13-mini-blue-select-2021.png
+  - iPhone 13: https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/iphone-13-family-select-2021.jpeg
+  - iPhone 13 pro: https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/iphone-13-pro-blue-select.png
+  - iPhone 13 pro max: https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/iphone-13-pro-max-gold-select.png
+
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/add-product-1.png)
+
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/add-product-2.png)
+
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/edit-product.png)
+
+- Register a normal user and play around
+
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/cart-1.png)
+
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/shipping.png)
+
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/shipping-details.png)
 
 ---
 ### Step 4. Install Mongoku on ECS to manage data on MongoDB
@@ -142,17 +165,12 @@ npm install -g mongoku
 mongoku start --pm2
 ```
 
-![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/start-mongoku.png)
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/start-mongoku.png)
 
-Then let's open ``http://<ECS_EIP>:3100/`` again in web browser to visit the Mongoku Web Admin. Mongoku use ``3100`` port for web app by default. I've already set this in the security group rule within the [Terraform script](https://github.com/alibabacloud-howto/solution-mongodb-labs/blob/main/interactive-roadmap/deployment/terraform/main.tf).
+Then let's open ``http://<ECS_EIP>:3100/`` again in web browser to visit the Mongoku Web Admin. Mongoku use ``3100`` port for web app by default. I've already set this in the security group rule within the [Terraform script](https://github.com/alibabacloud-howto/solution-mongodb-labs/blob/main/e-commerce-application/deployment/terraform/main.tf).
 
-Now we can add the MongoDB connection URI here as the server to navigate and manage the data for this interactive roadmap web app via Mongoku. Please enjoy.
+Now we can add the MongoDB connection URI here as the server to navigate and manage the data for this online store e-Commerce web app via Mongoku. Please enjoy.
 
 ![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/mongoku-1.png)
 
-![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/mongoku-2.png)
-
-![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/mongoku-3.png)
-
-
-This tutorial is modified based on [https://github.com/alexander-braun/interactive-roadmap](https://github.com/alexander-braun/interactive-roadmap) to run on Alibaba Cloud. I've done some modification and customization to make them all work on Alibaba Cloud.
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/mongoku-2.png)
