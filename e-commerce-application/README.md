@@ -24,10 +24,10 @@ Deployment architecture:
 ---
 ### Index
 
-- [Step 1. Use Terraform to provision ECS and MongoDB database on Alibaba Cloud]()
-- [Step 2. Deploy and setup Node.js and other basic components on ECS]()
-- [Step 3. Build and deploy the web application]()
-- [Step 4. Install Mongoku on ECS to manage data on MongoDB]()
+- [Step 1. Use Terraform to provision ECS and MongoDB database on Alibaba Cloud](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/e-commerce-application#step-1-use-terraform-to-provision-ecs-and-mongodb-database-on-alibaba-cloud)
+- [Step 2. Deploy and setup Node.js and other basic components on ECS](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/e-commerce-application#step-2-deploy-and-setup-nodejs-and-other-basic-components-on-ecs)
+- [Step 3. Build and deploy the web application](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/e-commerce-application#step-3-build-and-deploy-the-web-application)
+- [Step 4. Install Mongoku on ECS to manage data on MongoDB](https://github.com/alibabacloud-howto/solution-mongodb-labs/tree/main/e-commerce-application#step-4-install-mongoku-on-ecs-to-manage-data-on-mongodb)
 
 ---
 ### Step 1. Use Terraform to provision ECS and MongoDB database on Alibaba Cloud
