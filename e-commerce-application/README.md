@@ -11,10 +11,6 @@ More tutorial around Alibaba Cloud Database, please refer to:
 
 This is a demo E-Commerce online store web application that is built with [Node.js](https://nodejs.org/) [Express framework](https://expressjs.com/). The backend data store is on MongoDB. In this tutorial, I will show the steps of build and deployment on [Alibaba Cloud ECS](https://www.alibabacloud.com/product/ecs) and [MongoDB](https://www.alibabacloud.com/product/apsaradb-for-mongodb).
 
-![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/app_screenshot.png)
-
-Live demo: [http://roadmap-gallery.alibabacloudlabs.com/](http://roadmap-gallery.alibabacloudlabs.com/), if you can not open the domain URL, please make sure that you had VPN or network proxy set properly.
-
 These are the key features of this web application:
 - Manage product via ``admin`` account
 - Register and login with user
