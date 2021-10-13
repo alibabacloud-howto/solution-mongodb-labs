@@ -164,15 +164,18 @@ npm install next react react-dom
 
 ![image desc](https://labex.io/upload/H/W/H/MdKDbaeN1pZJ.jpg)
 
-Enter the following command to copy a ".env" configuration file first.
+Enter the command: ``vim .env``, create a ".env" configuration file, input with the following content and modify the connection address of Mongodb referring to the figure below.
 
 ```
-cp .env.example .env
+MONGODB_URI=mongodb://root:Aliyuntest123@dds-3ns47c06f6d363141.mongodb.rds.aliyuncs.com:3717,dds-3ns47c06f6d363142.mongodb.rds.aliyuncs.com:3717/admin?replicaSet=mgset-55524405
+CLOUDINARY_URL=cloudinary://741947492169653:vkyuRmZ3EbSULnkfXJdtSqwhURw@dbplcha6k
+DB_NAME=admin
+
+SENDGRID_API_KEY=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
+EMAIL_FROM=averyniceguy@nextjs-mongodb.now.sh
+WEB_URI=https://nextjs-mongodb.now.sh
+SESSION_SECRET=keyboard cat
 ```
-
-![image desc](https://labex.io/upload/H/U/O/h43VH2jrmva4.jpg)
-
-Enter the command: ``vim .env``, open the ".env" configuration file, and modify the connection address of Mongodb referring to the figure below.
 
 ![image desc](https://labex.io/upload/R/K/E/BgOlYAFQgtTV.jpg)
 
