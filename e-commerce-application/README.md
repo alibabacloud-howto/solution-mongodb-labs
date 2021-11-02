@@ -19,7 +19,7 @@ These are the key features of this web application:
 
 Deployment architecture:
 
-![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/interactive-roadmap/images/archi.png)
+![image.png](https://github.com/alibabacloud-howto/solution-mongodb-labs/raw/main/e-commerce-application/images/archi.png)
 
 ---
 ### Index
